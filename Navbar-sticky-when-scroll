@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide-in When Scrolling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="float-panel.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="demo2.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="float-panel" data-top="0" data-scroll="500">
+            <div style="text-align:right;max-width:1360px;margin:0 auto;">
+                <a href="#" style="float:left;">
+                    <i class="fa fa-gg"></i>
+                    <em style="font:bold 20px Verdana, Arial;letter-spacing:1px;">MENUCOOL</em>
+                </a>
+                <a href="#"><i class="fa fa-tint"></i> Free trial</a>
+                <a href="#">Subscribe</a>
+                <a href="#">Services</a>
+                <a href="#"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
+
+/* ------in---css---- For sticky header: class="float-panel"  ------------------*/
+.float-panel {
+    width:100%;background:white;z-index:300;padding:30px 0;transform: translateZ(0);
+    transition:all 0.5s; /* Effect for switching from .fixed to static */
+}
+.float-panel .content-area {margin:10px auto;}
+.float-panel a {font-size:16px;text-decoration:none;color:#444;display:inline-block;padding:10px 20px;}
+.float-panel .fa-gg {color:#F0595C;font-size:30px;vertical-align:middle;transition:all 1s;}
+/* when class="float-panel fixed" */
+.fixed {box-shadow:0 2px 6px rgba(0,0,0,0.2);padding:4px 0;animation:slide-down 0.7s;opacity:0.9;}
+.fixed .fa-gg {transform: rotate(360deg); }
+@keyframes slide-down {
+    0% {opacity: 0; transform: translateY(-100%);} 
+    100% {opacity: 0.9; transform: translateY(0); } }
+    
+/* ---------------- For Animation on Scroll ---------------- */
+.slideanim {
+    visibility:hidden;
+    visibility:visible\9;/*For old IE browsers IE6-8 */
+}
+.slideanim.slide {visibility: visible; animation:slide 1s;}
+.slideanim::after {
+    content: "";
+    display: table;
+    clear: both;}
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    } 
+}
